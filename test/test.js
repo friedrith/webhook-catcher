@@ -15,8 +15,8 @@ if (process.env.NODE_ENV !== 'production') {
 const app = express()
 
 const catcher = new WebhookCatcher({
-  services: [ 'bitbucket' ],
-  token: 'c3598e25b9473a0ed71e6d87b6907af9',
+  services: [ 'bitbucket', 'github' ],
+  token: process.env.TOKEN,
 })
 
 app
