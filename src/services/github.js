@@ -26,7 +26,7 @@ export default class Github extends Router {
 
     this.router.post('/:appName', (req, res) => {
       const event = req.headers['x-github-event']
-      console.log(req.body.repository)
+      console.log(req.body.payload)
       if (event) {
         if (event === 'push' && req.body.ref && req.body.ref.split('/').length >= 2) {
           const branch = req.body.ref.split('/')[2]
