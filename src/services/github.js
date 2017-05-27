@@ -31,10 +31,10 @@ export default class Github extends Router {
         if (event === 'push' && req.body.payload.ref && req.body.payload.ref.split('/').length >= 2) {
           const branch = req.body.ref.split('/')[2]
           res.sendStatus(204)
-          this.emit('push', new PushEvent(req.params.appName, req.body.payload.repository.html_url, branch))
+          this.emit('push', new PushEvent(req.params.appName, '', branch))
         } else if (event === 'ping') {
           res.sendStatus(204)
-          this.emit('push', new PingEvent(req.params.appName, req.body.payload.repository.html_url))
+          this.emit('push', new PingEvent(req.params.appName, ''))
         }
       } else {
         res.sendStatus(400)
