@@ -6,6 +6,7 @@ export default class PullRequestEvent extends RepositoryEvent {
     this.branchSource = branchSource
     this.branchDestination = branchDestination
     this.description = description
+    this.title = title
   }
 
   toJson () {
