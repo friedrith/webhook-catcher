@@ -29,7 +29,7 @@ class WebhookCatcher extends EventEmitter {
           for (const service of options.services) {
             let catcher = null
             if (service === 'github') {
-              catcher = new Bitbucket(this.token)
+              catcher = new Github(this.token)
             } else if (service === 'bitbucket') {
               catcher = new Bitbucket(this.token)
             }
