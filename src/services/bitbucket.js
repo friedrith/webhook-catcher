@@ -19,6 +19,7 @@ export default class Bitbucket extends Router {
     })
 
     this.router.post('/:token/:appName', (req, res) => {
+      console.log(JSON.stringify(req.body, null, 4))
       if (req.body.repository) {
         if (req.body.push && req.body.push.changes && req.body.push.changes.length > 0 && req.body.push.changes[0].new.type === 'branch') {
           res.sendStatus(204)
