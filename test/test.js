@@ -27,10 +27,15 @@ app
     res.send('ok')
 })
 
-// catcher.on('pull-request', (pullRequest) => {
-//   // pull request
-//   console.log(pullRequest)
-// })
+catcher.on('pull-request', (pullRequest) => {
+  // pull request
+  console.log(pullRequest)
+})
+
+catcher.on('push', (push) => {
+  // pull request
+  console.log(push)
+})
 
 catcher.on('all', (event) => {
   console.log(event.toJson())
