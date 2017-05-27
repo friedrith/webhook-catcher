@@ -1,6 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import winston from 'winston'
+import morgan from 'morgan'
 import WebhookCatcher from '../src/webhook-catcher'
 
 if (process.env.NODE_ENV !== 'production') {
@@ -20,6 +21,7 @@ const catcher = new WebhookCatcher({
 })
 
 app
+.use(morgan('combined'))
 .use('/webhook', catcher.router)
 .get('/', (req, res) => {
     res.send('ok')
