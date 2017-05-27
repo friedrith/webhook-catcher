@@ -1,16 +1,16 @@
 {
-  "name": "webhook-router",
+  "name": "webhook-catcher",
   "version": "0.1.0",
   "description": "Express router to catch webhooks",
   "main": "src/router.js",
   "scripts": {
-    "test": "mocha test/test-parser.js",
+    "test": "babel-node test/test.js",
     "start": "babel-node src/router.js",
     "build": "babel src --out-dir dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thibaultfriedrich/webhook-router.git"
+    "url": "git+https://github.com/thibaultfriedrich/webhook-catcher.git"
   },
   "keywords": [
     "express",
@@ -18,13 +18,14 @@
     "webhook",
     "catcher"
   ],
-  "author": "Thibault Friedrich <tf@elqui.fr>",
+  "author": "Thibault Friedrich",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/thibaultfriedrich/webhook-router.git"
+    "url": "https://github.com/thibaultfriedrich/webhook-catcher.git"
   },
-  "homepage": "https://github.com/thibaultfriedrich/webhook-router.git#readme",
+  "homepage": "https://github.com/thibaultfriedrich/webhook-catcher.git#readme",
   "dependencies": {
+    "body-parser": "^1.17.1",
     "dotenv": "^2.0.0",
     "express": "^4.15.2",
     "fs-extra": "^1.0.0"
@@ -37,9 +38,11 @@
     "babel-preset-es2017": "^6.22.0",
     "babel-preset-stage-2": "^6.22.0",
     "chai": "^3.5.0",
+    "dotenv": "^2.0.0",
     "eslint": "^3.15.0",
     "eslint-config-airbnb": "^11.1.0",
     "eslint-plugin-jsx-a11y": "^2.0.1",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "winston": "^2.3.1"
   }
 }

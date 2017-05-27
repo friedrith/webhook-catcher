@@ -1,8 +1,51 @@
-# webhook-router
+# webhook-catcher
 
 This is an express router to catch webhooks. So you add this router to your express server and this router will emit signal when webhooks are pushed by some tool.
 
-For now, it manages:
-* github webhooks
-* bitbucket webhooks
+## Services
+
+For now, it manages services:
+
+* github
+* bitbucket
 * custom webhooks respecting a specific format  
+
+## Events
+
+For now, it manages events:
+
+* push
+* pull request
+
+
+```bash
+$ npm install webhook-catcher
+```
+
+```javascript
+import WebhookCatcher from 'webhook-catcher'
+import express from 'express'
+
+const app = express()
+
+const catcher = new WebhookCatcher({
+  services: [ 'bitbucket', 'github' ]
+})
+
+app
+.use('/webhook', catcher.router)
+.get('/', (req, res) => {
+    res.send('ok')
+})
+
+catcher.on('pull-request', (pullRequest) => {
+  // pull request
+})
+
+```
+
+
+## Links
+
+* [Bitbucket api](https://confluence.atlassian.com/bitbucket/event-payloads-740262817.html#EventPayloads-Repositoryevents)
+* [Github api](https://developer.github.com/webhooks/)
