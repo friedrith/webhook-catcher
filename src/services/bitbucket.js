@@ -26,6 +26,7 @@ export default class Bitbucket extends Router {
           this.emit('push', new PushEvent(req.params.appName, req.body.repository.links.html.href, req.body.push.changes[0].new.name))
         } else if (req.body.pullrequest && req.body.pullrequest.title && req.body.pullrequest.description && req.body.pullrequest.source && req.body.pullrequest.destination) {
           res.sendStatus(204)
+          console.log('pull request')
           this.emit('pull-request', new PullRequestEvent(req.params.appName, req.body.repository.links.html.href, req.body.pullrequest.source, req.body.pullrequest.destination, req.body.pullrequest.title, req.body.pullrequest.description))
         } else {
           res.sendStatus(400)
