@@ -2,7 +2,7 @@ import EventEmitter from 'events'
 import { Router } from 'express'
 import bodyParser from 'body-parser'
 
-import { Bitbucket } from './services'
+import { Bitbucket, Github } from './services'
 
 class WebhookCatcher extends EventEmitter {
     constructor (options) {
