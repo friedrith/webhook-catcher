@@ -2,19 +2,7 @@
 
 This is an express router to catch webhooks. So you add this router to your express server and this router will emit signal when webhooks are triggered by services.
 
-## Services
-
-For now, it manages services:
-
-* github
-* bitbucket
-
-## Events
-
-For now, it manages events:
-
-* push
-* pull request
+## Getting started
 
 ```bash
 $ npm install webhook-catcher
@@ -45,6 +33,21 @@ catcher.on('push', (push) => {
 })
 
 ```
+
+
+## Available services
+
+For now, it manages services:
+
+* github
+* bitbucket
+
+## Available events
+
+For now, it manages events:
+
+* push
+* pull request
 
 
 ## Links
