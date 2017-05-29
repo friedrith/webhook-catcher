@@ -1,6 +1,6 @@
 # webhook-catcher
 
-This is an express router to catch webhooks. So you add this router to your express server and this router will emit signal when webhooks are pushed by some tool.
+This is an express router to catch webhooks. So you add this router to your express server and this router will emit signal when webhooks are triggered by services.
 
 ## Services
 
@@ -8,7 +8,6 @@ For now, it manages services:
 
 * github
 * bitbucket
-* custom webhooks respecting a specific format  
 
 ## Events
 
@@ -16,7 +15,6 @@ For now, it manages events:
 
 * push
 * pull request
-
 
 ```bash
 $ npm install webhook-catcher
@@ -40,6 +38,10 @@ app
 
 catcher.on('pull-request', (pullRequest) => {
   // pull request
+})
+
+catcher.on('push', (push) => {
+  // push
 })
 
 ```
