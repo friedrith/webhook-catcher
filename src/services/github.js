@@ -36,7 +36,7 @@ export default class Github extends Service {
             repositoryUrl: body.repository.html_url,
             branch,
           }))
-        } else if (event === 'pull-request') {
+        } else if (event === 'pull_request') {
           res.sendStatus(204)
           const pullRequest = req.body.pullrequest
           const reviewers = []
