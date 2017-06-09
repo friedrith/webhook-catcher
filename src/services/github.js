@@ -36,6 +36,26 @@ export default class Github extends Service {
             repositoryUrl: body.repository.html_url,
             branch,
           }))
+        } else if (event === 'pull-request') {
+          res.sendStatus(204)
+          const pullRequest = req.body.pullrequest
+          const reviewers = []
+          pullRequest.requested_reviewers.forEach((reviewer) => {
+            reviewers.push({
+              username: reviewer.login,
+              url: reviewer.url,
+            })
+          })
+          this.publish(new PullRequestEvent({
+            appName: req.params.appName,
+            repositoryUrl: req.body.repository.links.html.href,
+            branchSource: pullRequest.head.ref,
+            branchDestination: pullRequest.base.ref,
+            title: pullRequest.title,
+            description: pullRequest.body,
+            reviewers,
+            url: pullRequest.hhtml_url,
+          }))
         } else if (event === 'ping') {
           res.sendStatus(204)
           this.publish(new PingEvent({

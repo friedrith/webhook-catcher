@@ -34,8 +34,9 @@ catcher.on('pull-request', (pullRequest) => {
   //   branchDestination: ...,
   //   description: ...,
   //   title: ...,
-  //   
-  //   see all fields in the following documentation 
+  //   reviewers: ...,
+  //   url: ...,
+  //   see all fields in the following documentation
   // }
 })
 

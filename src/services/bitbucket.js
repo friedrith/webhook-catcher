@@ -37,7 +37,6 @@ export default class Bitbucket extends Service {
 
           pullRequest.reviewers.forEach((reviewer) => {
             reviewers.push({
-              real_name: reviewer.display_name,
               username: reviewer.username,
               url: reviewer.links.html,
             })
