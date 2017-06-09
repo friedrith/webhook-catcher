@@ -28,15 +28,18 @@ export default class Bitbucket extends Service {
             repositoryUrl: req.body.repository.links.html.href,
             branch: req.body.push.changes[0].new.name,
           }))
-        } else if (req.body.pullrequest && req.body.pullrequest.title && req.body.pullrequest.source && req.body.pullrequest.destination) {
+        } else if (req.body.pullrequest /*&& req.body.pullrequest.title && req.body.pullrequest.source && req.body.pullrequest.destination*/) {
+          const pullRequest = req.body.pullrequest
           res.sendStatus(204)
           this.publish(new PullRequestEvent({
             appName: req.params.appName,
             repositoryUrl: req.body.repository.links.html.href,
-            branchSource: req.body.pullrequest.source.branch.name,
-            branchDestination: req.body.pullrequest.destination.branch.name,
-            title: req.body.pullrequest.title,
-            description: req.body.pullrequest.description,
+            branchSource: pullRequest.source.branch.name,
+            branchDestination: pullRequest.destination.branch.name,
+            title: pullRequest.title,
+            description: pullRequest.description,
+            reviewers: pullRequest.reviewers,
+            url: `${req.body.repository.links.html.href}/pull-requests/${pullRequest.id}`
           }))
         } else {
           res.sendStatus(400)
