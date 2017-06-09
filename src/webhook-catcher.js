@@ -38,16 +38,7 @@ class WebhookCatcher extends EventEmitter {
             catcher.on('all', (event) => {
               event.service = service
               this.emit('all', event)
-            })
-
-            catcher.on('pull-request', (event) => {
-              event.service = service
-              this.emit('pull-request', event)
-            })
-
-            catcher.on('push', (event) => {
-              event.service = service
-              this.emit('push', event)
+              this.emit(event.type, event)
             })
           }
         }

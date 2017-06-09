@@ -1,8 +1,8 @@
-import Router from './router'
+import Service from '../service'
 
 import { PullRequestEvent, PushEvent } from '../events'
 
-export default class Bitbucket extends Router {
+export default class Bitbucket extends Service {
   constructor ({ token = '' }) {
     super(token, 'bitbucket')
 
@@ -23,11 +23,21 @@ export default class Bitbucket extends Router {
       if (req.body.repository) {
         if (req.body.push && req.body.push.changes && req.body.push.changes.length > 0 && req.body.push.changes[0].new.type === 'branch') {
           res.sendStatus(204)
-          this.emit('push', new PushEvent(req.params.appName, req.body.repository.links.html.href, req.body.push.changes[0].new.name))
+          this.publish(new PushEvent({
+            appName: req.params.appName,
+            repositoryUrl: req.body.repository.links.html.href,
+            branch: req.body.push.changes[0].new.name,
+          }))
         } else if (req.body.pullrequest && req.body.pullrequest.title && req.body.pullrequest.source && req.body.pullrequest.destination) {
           res.sendStatus(204)
-          console.log('pull request')
-          this.emit('pull-request', new PullRequestEvent(req.params.appName, req.body.repository.links.html.href, req.body.pullrequest.source.branch.name, req.body.pullrequest.destination.branch.name, req.body.pullrequest.title, req.body.pullrequest.description))
+          this.publish(new PullRequestEvent({
+            appName: req.params.appName,
+            repositoryUrl: req.body.repository.links.html.href,
+            branchSource: req.body.pullrequest.source.branch.name,
+            branchDestination: req.body.pullrequest.destination.branch.name,
+            title: req.body.pullrequest.title,
+            description: req.body.pullrequest.description,
+          }))
         } else {
           res.sendStatus(400)
         }

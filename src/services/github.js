@@ -1,10 +1,10 @@
 import crypto from 'crypto'
 
-import Router from './router'
+import Service from '../service'
 
 import { PullRequestEvent, PushEvent, PingEvent } from '../events'
 
-export default class Github extends Router {
+export default class Github extends Service {
   constructor ({ token = '' }) {
     super(token, 'github')
 
@@ -31,10 +31,17 @@ export default class Github extends Router {
         if (event === 'push' && body.ref && body.ref.split('/').length >= 3) {
           const branch = body.ref.split('/')[2]
           res.sendStatus(204)
-          this.emit('push', new PushEvent(req.params.appName, body.repository.html_url, branch))
+          this.publish(new PushEvent({
+            appName: req.params.appName,
+            repositoryUrl: body.repository.html_url,
+            branch,
+          }))
         } else if (event === 'ping') {
           res.sendStatus(204)
-          this.emit('ping', new PingEvent(req.params.appName, body.repository.html_urlg))
+          this.publish(new PingEvent({
+            appName: req.params.appName,
+            repositoryUrl: body.repository.html_url,
+          }))
         } else {
           res.sendStatus(400)
         }

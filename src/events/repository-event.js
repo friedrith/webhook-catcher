@@ -1,15 +1,17 @@
-export default class RepositoryEvent {
-  constructor (appName = '', repository = '') {
-    this.appName = appName
-    this.repository = repository
+import WebhookEvent from '../webhook-event'
+
+export default class RepositoryEvent extends WebhookEvent {
+  constructor (type = '', appName = '', repositoryUrl = '') {
+    super(type, appName)
+    this.repositoryUrl = repositoryUrl
     this.service = ''
   }
 
   toJson () {
     return {
-      name: this.appName,
-      repository: this.repository,
-      service: this.service
+      ...super.toJson(),
+      repositoryUrl: this.repositoryUrl,
+      service: this.service,
     }
   }
 }

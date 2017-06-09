@@ -26,6 +26,17 @@ app
 
 catcher.on('pull-request', (pullRequest) => {
   // pull request
+  // {
+  //   appName: ...,
+  //   repositoy: ...,
+  //   service: 'github' | 'bitbucket',
+  //   branchSource: ...,
+  //   branchDestination: ...,
+  //   description: ...,
+  //   title: ...,
+  //   
+  //   see all fields in the following documentation 
+  // }
 })
 
 catcher.on('push', (push) => {

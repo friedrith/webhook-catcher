@@ -2,10 +2,10 @@
   "name": "webhook-catcher",
   "version": "0.1.0",
   "description": "Express router to catch webhooks",
-  "main": "src/router.js",
+  "main": "src/webhook-catcher.js",
   "scripts": {
     "test": "babel-node test/test.js",
-    "start": "babel-node src/router.js",
+    "start": "babel-node src/webhook-catcher.js",
     "build": "babel src --out-dir dist"
   },
   "repository": {

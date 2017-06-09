@@ -1,8 +1,8 @@
 import RepositoryEvent from './repository-event'
 
 export default class PushEvent extends RepositoryEvent {
-  constructor (appName, repository, branch) {
-    super(appName, repository)
+  constructor ({ appName = '', repositoryUrl = '', branch = '' }) {
+    super('push', appName, repositoryUrl)
     this.branch = branch
   }
 
