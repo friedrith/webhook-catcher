@@ -19,7 +19,7 @@ export default class Bitbucket extends Service {
     })
 
     this.router.post('/:token/:appName', (req, res) => {
-      console.log(JSON.stringify(req.body, null, 4))
+      // console.log(JSON.stringify(req.body, null, 4))
       if (req.body.repository) {
         if (req.body.push && req.body.push.changes && req.body.push.changes.length > 0 && req.body.push.changes[0].new.type === 'branch') {
           res.sendStatus(204)
@@ -31,6 +31,17 @@ export default class Bitbucket extends Service {
         } else if (req.body.pullrequest /*&& req.body.pullrequest.title && req.body.pullrequest.source && req.body.pullrequest.destination*/) {
           const pullRequest = req.body.pullrequest
           res.sendStatus(204)
+
+
+          const reviewers = []
+
+          pullRequest.reviewers.forEach((reviewer) => {
+            reviewers.push({
+              real_name: reviewer.display_name,
+              username: reviewer.username,
+              url: reviewer.links.html,
+            })
+          })
           this.publish(new PullRequestEvent({
             appName: req.params.appName,
             repositoryUrl: req.body.repository.links.html.href,
@@ -38,7 +49,7 @@ export default class Bitbucket extends Service {
             branchDestination: pullRequest.destination.branch.name,
             title: pullRequest.title,
             description: pullRequest.description,
-            reviewers: pullRequest.reviewers,
+            reviewers,
             url: `${req.body.repository.links.html.href}/pull-requests/${pullRequest.id}`
           }))
         } else {
