@@ -38,7 +38,7 @@ export default class Github extends Service {
           }))
         } else if (event === 'pull_request') {
           res.sendStatus(204)
-          const pullRequest = req.body.pullrequest
+          const pullRequest = body.pullrequest
           const reviewers = []
           pullRequest.requested_reviewers.forEach((reviewer) => {
             reviewers.push({
@@ -48,7 +48,7 @@ export default class Github extends Service {
           })
           this.publish(new PullRequestEvent({
             appName: req.params.appName,
-            repositoryUrl: req.body.repository.links.html.href,
+            repositoryUrl: body.repository.links.html.href,
             branchSource: pullRequest.head.ref,
             branchDestination: pullRequest.base.ref,
             title: pullRequest.title,
