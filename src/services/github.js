@@ -38,7 +38,7 @@ export default class Github extends Service {
           }))
         } else if (event === 'pull_request') {
           res.sendStatus(204)
-          const pullRequest = body.pullrequest
+          const pullRequest = body.pull_request
           const reviewers = []
           pullRequest.requested_reviewers.forEach((reviewer) => {
             reviewers.push({
