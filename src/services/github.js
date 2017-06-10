@@ -48,13 +48,13 @@ export default class Github extends Service {
           })
           this.publish(new PullRequestEvent({
             appName: req.params.appName,
-            repositoryUrl: body.repository.links.html.href,
+            repositoryUrl: body.repository.html_url,
             branchSource: pullRequest.head.ref,
             branchDestination: pullRequest.base.ref,
             title: pullRequest.title,
             description: pullRequest.body,
             reviewers,
-            url: pullRequest.hhtml_url,
+            url: pullRequest.html_url,
           }))
         } else if (event === 'ping') {
           res.sendStatus(204)
