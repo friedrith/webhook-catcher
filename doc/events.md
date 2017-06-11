@@ -33,6 +33,7 @@ The ping event has no more information than what described above.
 
 ```javascript
 {
+  // core information +
   title: '...', // pull request title
   description: '...', // pull request description
   branchSource: '...', // source  branch of the pull request
@@ -52,6 +53,7 @@ The ping event has no more information than what described above.
 
 ```javascript
 {
+  // core information +
   branch: '...', // which branch is concerned
 }
 ```

@@ -11,7 +11,7 @@ On your github repository, go to Settings > Webhooks > Add webhook and use the f
 
 * Payload URL: `<host>/webhook/github/<appName>`
 * Content type: `application/json`
-* Secret: <your token>
+* Secret: `<your token>`
 
 # Bitbucket
 
