@@ -15,7 +15,8 @@ import express from 'express'
 const app = express()
 
 const catcher = new WebhookCatcher({
-  services: [ 'bitbucket', 'github' ]
+  services: [ 'bitbucket', 'github' ],
+  token: '...',
 })
 
 app
@@ -54,6 +55,9 @@ For now, it manages services:
 * github
 * bitbucket
 
+See how to define webhook in services in [services documentation](doc/services.md)
+
+
 ## Available events
 
 For now, it manages events:
@@ -61,6 +65,7 @@ For now, it manages events:
 * push
 * pull request
 
+See all events fields in [events documentation](doc/events.md)
 
 ## Links
 

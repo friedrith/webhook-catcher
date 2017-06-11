@@ -1,6 +1,6 @@
 {
   "name": "webhook-catcher",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Express router to catch webhooks",
   "main": "src/webhook-catcher.js",
   "scripts": {
