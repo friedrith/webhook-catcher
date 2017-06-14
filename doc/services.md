@@ -10,7 +10,7 @@ that requests really come from your repositories.
 
 On your github repository, go to Settings > Webhooks > Add webhook and use the following configuration :
 
-* Payload URL: `<host>/<route define in your express server>/github/<appName>`
+* Payload URL: `<host>/<route defined in your express server>/github/<appName>`
 * Content type: `application/json`
 * Secret: `<token>`
 
