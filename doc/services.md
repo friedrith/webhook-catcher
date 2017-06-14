@@ -6,7 +6,7 @@ webhooks in these services.
 > Notice that you need to generate a token and give it the webhook catcher in order to secure the webhook. This token will ensure you
 that requests really come from your repositories.
 
-# Github
+## Github
 
 On your github repository, go to Settings > Webhooks > Add webhook and use the following configuration :
 
@@ -16,7 +16,7 @@ On your github repository, go to Settings > Webhooks > Add webhook and use the f
 
 > For example, if your code is `app.use('/webhook', catcher.router)` then your payload URL will be `<host>/webhook/github/<appName>`
 
-# Bitbucket
+## Bitbucket
 
 On your bitbucket repository, go to Settings > Webhooks > Add webhook and use the following configuration:
 
