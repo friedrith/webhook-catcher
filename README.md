@@ -43,6 +43,12 @@ catcher.on('pull-request', (pullRequest) => {
 
 catcher.on('push', (push) => {
   // push
+  // {
+  //   appName: ...,
+  //   repositoy: ...,
+  //   service: 'github' | 'bitbucket',
+  //   branch: '...', // which branch is concerned
+  // }
 })
 
 ```

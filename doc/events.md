@@ -1,7 +1,5 @@
 # Events
 
-This folder contains all documentation about events emitted by the catcher
-
 For now, the events managed are :
 
 * ping
