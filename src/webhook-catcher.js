@@ -21,9 +21,14 @@ class WebhookCatcher extends EventEmitter {
           let catcher = null
           if (service === 'github') {
             catcher = new Github(this.token)
+          } else if (typeof service === 'object' && service.name === 'github') {
+            catcher = new Github(service.token)
           } else if (service === 'bitbucket') {
             catcher = new Bitbucket(this.token)
+          } else if (typeof service === 'object' && service.name === 'bitbucket') {
+            catcher = new Bitbucket(service.token)
           }
+
           this.router.use('/' + catcher.id, catcher.router)
 
           catcher.on('all', (event) => {
