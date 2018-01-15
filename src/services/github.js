@@ -26,7 +26,7 @@ export default class Github extends Service {
 
     this.router.post('/:appName', (req, res) => {
       const event = req.headers['x-github-event']
-      const body = JSON.parse(req.body.payload)
+      const body = JSON.parse(req.body)
       if (event) {
         if (event === 'push' && body.ref && body.ref.split('/').length >= 3) {
           const branch = body.ref.split('/')[2]
