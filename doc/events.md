@@ -11,7 +11,7 @@ A event has at least the core :
 ```javascript
 {
   type: 'ping' | 'pull-request' | 'push',
-  name: '...', // the name of the application which triggered the webhook
+  appName: '...', // the name of the application which triggered the webhook
                // see how to define webhook to change this name
   repositoryUrl: '...', // https url of the repository which triggered the webhook
   service: 'github' | 'bitbucket',
